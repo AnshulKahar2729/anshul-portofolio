@@ -13,6 +13,7 @@ export const DATA = {
 In addition to these core technologies, I've worked with GraphQL for efficient data querying, Docker for containerization, and TypeScript for enhanced code reliability. I'm well-versed in Node.js.
 I'm always eager to learn new technologies and apply them to interesting projects. Whether it's optimizing backend services, implementing complex frontend architectures, or diving into cloud technologies like AWS or Google Cloud Platform, I'm ready to take on new challenges.
 `,
+  resumeUrl: "/resume.pdf",
   avatarUrl: "/me.png",
   skills: [
     "React",
@@ -134,6 +135,97 @@ Maintained and wrote comprehensive test suites with Jest to ensure the reliabili
     },
   ],
   projects: [
+    {
+      title: "CodeUI.ai",
+      href: "https://codeui-ai.vercel.app/",
+      dates: "",
+      active: true,
+      description:
+        "CodeUI.ai is an AI-powered code generator that helps developers generate code faster and more efficiently. It previews the code and allows users to see the output before generating the final code.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "Prisma",
+        "TailwindCSS",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://codeui-ai.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AnshulKahar2729/codeui.ai",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/codeui.png",
+      video: "",
+    },
+    {
+      title: "Codefox.ai",
+      href: "https://codefoxai.vercel.app/",
+      dates: "",
+      active: true,
+      description:
+        "Codefox.ai is an AI-powered tool that helps developers to review their PR requests, it helps in providing feedback and suggestions to improve the code.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "Prisma",
+        "VectorDB",
+        "RAG",
+        "TailwindCSS",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://codefoxai.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AnshulKahar2729/codefox.ai",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/codefox.png",
+      video: "",
+    },
+    {
+      title: "Repo GPT",
+      href: "https://repogpt.vercel.app/",
+      dates: "",
+      active: true,
+      description:
+        "Repo GPT is an AI-powered tool that helps you to get insights about your code. Ask questions about your code and get answers. You can also get insights about your code by asking questions about your code.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "Prisma",
+        "VectorDB",
+        "RAG",
+        "TailwindCSS",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://repo-gpt-henna.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AnshulKahar2729/repo-gpt",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/repogpt.png",
+      video: "",
+    },
     {
       title: "Learnify - LMS",
       href: "https://learnify-next-js-lms.vercel.app/",
