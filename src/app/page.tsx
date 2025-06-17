@@ -1,4 +1,3 @@
-import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
@@ -91,7 +90,7 @@ export default function Page() {
           ))}
         </div>
       </section>
-      <section id="education">
+      {/* <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
             <h2 className="text-xl font-bold">Education</h2>
@@ -113,7 +112,7 @@ export default function Page() {
             </BlurFade>
           ))}
         </div>
-      </section>
+      </section> */}
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
@@ -121,8 +120,16 @@ export default function Page() {
           </BlurFade>
           <div className="flex flex-wrap gap-1">
             {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
+              <BlurFade 
+                key={skill} 
+                delay={BLUR_FADE_DELAY * 10 + id * 0.05}
+              >
+                <Badge 
+                  key={skill} 
+                  className="cursor-default transform transition-all duration-300 hover:scale-110 hover:rotate-1"
+                >
+                  {skill}
+                </Badge>
               </BlurFade>
             ))}
           </div>
