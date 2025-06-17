@@ -16,7 +16,9 @@ interface BlurFadeTextProps {
   delay?: number;
   yOffset?: number;
   animateByCharacter?: boolean;
+  customElement?: React.ReactNode;
 }
+
 const BlurFadeText = ({
   text,
   className,
@@ -25,6 +27,7 @@ const BlurFadeText = ({
   delay = 0,
   yOffset = 8,
   animateByCharacter = false,
+  customElement,
 }: BlurFadeTextProps) => {
   const defaultVariants: Variants = {
     hidden: { y: yOffset, opacity: 0, filter: "blur(8px)" },
@@ -76,6 +79,7 @@ const BlurFadeText = ({
           className={cn("inline-block", className)}
         >
           {text}
+          {customElement}
         </motion.span>
       </AnimatePresence>
     </div>
