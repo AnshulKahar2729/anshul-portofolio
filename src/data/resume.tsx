@@ -29,7 +29,7 @@ I'm always eager to learn new technologies and apply them to interesting project
     "GraphQL",
     "Prisma",
     "Drizzle",
-    "AWS",    
+    "AWS",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -76,6 +76,17 @@ I'm always eager to learn new technologies and apply them to interesting project
 
   work: [
     {
+      company: "Stealth Startup",
+      href: "",
+      badges: [],
+      location: "Remote",
+      title: "Founding Engineer",
+      logoUrl: "/stealth.png",
+      start: "Aug 2025",
+      end: "Present",
+      description: `Building something exciting with react native.`,
+    },
+    {
       company: "Tracks and Towers InfraTech Private Ltd",
       href: "https://tracksandtowers.com/",
       badges: [],
@@ -83,8 +94,8 @@ I'm always eager to learn new technologies and apply them to interesting project
       title: "Software Developer",
       logoUrl: "/ttipl.png",
       start: "Aug 2024",
-      end: "Present",
-      description: `Building an AI-driven ERP platform for the construction industry, focusing on procurement module analysis to streamline decision-making processes.
+      end: "Jul 2025",
+      description: `Developed an AI-driven ERP platform for the construction industry, focusing on procurement module analysis to streamline decision-making processes.
 
 Utilized React, Node.js, and TypeScript to build dynamic, scalable frontend and backend components.
 
