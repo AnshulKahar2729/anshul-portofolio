@@ -161,12 +161,12 @@ export default function Page() {
         <div className="absolute inset-0 bg-grid-small-black/[0.02] dark:bg-grid-small-white/[0.02]"></div>
         <div className="relative space-y-16 w-full py-16">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
-            <div className="flex flex-col items-center justify-center space-y-6 text-center max-w-4xl mx-auto">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center max-w-7xl mx-auto">
               <div className="space-y-4 group">
                 <div className="inline-block rounded-lg bg-foreground text-background px-4 py-2 text-sm font-medium transition-all duration-300 group-hover:scale-105 group-hover:bg-primary group-hover:shadow-lg">
                   Featured Projects
                 </div>
-                <h2 className="text-4xl font-bold tracking-tighter sm:text-6xl lg:text-7xl transition-all duration-300 group-hover:scale-105 group-hover:text-primary bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
+                <h2 className="text-xl font-bold tracking-tighter sm:text-2xl lg:text-3xl transition-all duration-300 group-hover:scale-105 group-hover:text-primary bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
                   My Latest Work
                 </h2>
                 <p className="text-muted-foreground text-lg md:text-xl/relaxed max-w-3xl transition-all duration-300 group-hover:text-foreground/90">
