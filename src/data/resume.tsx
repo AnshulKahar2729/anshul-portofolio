@@ -76,15 +76,32 @@ I'm always eager to learn new technologies and apply them to interesting project
 
   work: [
     {
+      company: "Groww",
+      href: "",
+      badges: [],
+      location: "Remote",
+      title: "SDE Intern",
+      logoUrl: "/groww.png",
+      start: "August 2025",
+      end: "Present",
+      description: `Worked as a React Native Developer in the App Platform Team, contributing to the development and optimization of
+Groww's core mobile infrastructure. Implemented feature toggles or analytics tracking using internal frameworks.
+Fixed critical production bugs and enhanced UI/UX consistency across Groww's Invest App and internal UI component
+library.`,
+    },
+    {
       company: "Stealth Startup",
       href: "",
       badges: [],
       location: "Remote",
       title: "Founding Engineer",
       logoUrl: "/stealth.png",
-      start: "Aug 2025",
-      end: "Present",
-      description: `Building something exciting with react native.`,
+      start: "June 2025",
+      end: "August 2025",
+      description: `Led React Native performance optimization, improving app startup time, UI responsiveness, and reducing memory usage;
+successfully published apps to App Store & Play Store.
+Designed and developed the backend in Node.js/ExpressJS, including API architecture, database schema design, Redis
+caching, query optimization, connection pooling, and async processing for scalability`,
     },
     {
       company: "Tracks and Towers InfraTech Private Ltd",
@@ -94,7 +111,7 @@ I'm always eager to learn new technologies and apply them to interesting project
       title: "Software Developer",
       logoUrl: "/ttipl.png",
       start: "Aug 2024",
-      end: "Jul 2025",
+      end: "June 2025",
       description: `Developed an AI-driven ERP platform for the construction industry, focusing on procurement module analysis to streamline decision-making processes.
 
 Utilized React, Node.js, and TypeScript to build dynamic, scalable frontend and backend components.
@@ -119,7 +136,7 @@ Maintained and wrote comprehensive test suites with Jest to ensure the reliabili
       title: "Full Stack Developer",
       logoUrl: "/ortelo_logo.jpeg",
       start: "Jun 2024",
-      end: "Jun 2024",
+      end: "July 2024",
       description: `Developed a job platform using React.js for a dynamic, responsive user interface. Collaborated closely with designers and back-end developers to deliver a cohesive and scalable solution. 
       Leveraged tRPC for seamless, type-safe API integration between the front-end and back-end. Implemented efficient state management and UI logic to ensure smooth user experience and high performance.`,
     },
