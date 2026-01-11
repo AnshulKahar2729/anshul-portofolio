@@ -25,7 +25,12 @@ export function TimeBasedBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden" style={{ backgroundColor: "#0f0f0f" }}>
+    <>
+      {/* Background color layer - behind everything */}
+      <div className="fixed inset-0 -z-10 overflow-hidden" style={{ backgroundColor: "#0f0f0f" }} />
+
+      {/* Sky elements and particles layer - on top of sidebar */}
+      <div className="fixed inset-0 z-[55] overflow-hidden pointer-events-none">
       {/* MORNING - Rising sun and birds (6am-12pm) */}
       {timeOfDay === "morning" && (
         <>
@@ -226,6 +231,7 @@ export function TimeBasedBackground() {
           ))}
         </>
       )}
-    </div>
+      </div>
+    </>
   );
 }

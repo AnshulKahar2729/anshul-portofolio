@@ -27,7 +27,7 @@ export function CursorSpotlight() {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-30">
+    <div className="pointer-events-none fixed inset-0 z-[70]">
       {isVisible && (
         <>
           {/* Subtle main glow */}

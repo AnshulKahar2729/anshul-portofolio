@@ -29,8 +29,16 @@ export function SubtleBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden" style={{ backgroundColor: "#0f0f0f" }}>
-      {/* Twinkling static particles */}
+    <>
+      {/* Background color layer - behind everything */}
+      <div className="fixed inset-0 -z-10 overflow-hidden" style={{ backgroundColor: "#0f0f0f" }}>
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
+      </div>
+
+      {/* Particles layer - on top of sidebar */}
+      <div className="fixed inset-0 z-[55] overflow-hidden pointer-events-none">
+        {/* Twinkling static particles */}
       {particles.map((particle, i) => (
         <motion.div
           key={`static-${i}`}
@@ -80,9 +88,7 @@ export function SubtleBackground() {
           }}
         />
       ))}
-
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
-    </div>
+      </div>
+    </>
   );
 }

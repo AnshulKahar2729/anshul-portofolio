@@ -112,7 +112,7 @@ export function Sidebar() {
             <motion.button
               key={item.href}
               onClick={() => scrollToSection(item.href)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all relative ${
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all relative overflow-hidden group ${
                 isActive
                   ? "text-white"
                   : "hover:bg-white/10 dark:hover:bg-white/5 text-foreground"
@@ -136,23 +136,50 @@ export function Sidebar() {
                       damping: 30
                     }}
                   />
-                  {/* Periodic shine animation */}
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-lg"
-                    animate={{
-                      x: ["-100%", "200%"],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      repeatDelay: 2,
-                      ease: "easeInOut"
-                    }}
-                  />
+                  {/* Shiny effect - shimmer */}
+                  <motion.div
+                    className="pointer-events-none absolute inset-0 z-20"
+                    initial={false}
+                    animate={{}}
+                  >
+                    <motion.div
+                      className="absolute inset-y-0 left-[-60%] w-[60%] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-70 group-hover:animate-shine"
+                      style={{
+                        filter: 'blur(1px)'
+                      }}
+                      initial={false}
+                      animate={isActive ? { left: ["-60%", "120%"] } : {}}
+                      transition={
+                        isActive
+                          ? {
+                              duration: 1.2,
+                              repeat: Infinity,
+                              ease: "linear",
+                            }
+                          : {}
+                      }
+                    />
+                  </motion.div>
                 </>
               )}
               <Icon className="h-5 w-5 relative z-10" />
               <span className="font-medium relative z-10">{item.label}</span>
+              <style jsx>{`
+                .group:hover .group-hover\\:animate-shine {
+                  animation: shineMove 1.2s linear forwards;
+                }
+                @keyframes shineMove {
+                  0% {
+                    left: -60%;
+                  }
+                  60% {
+                    left: 120%;
+                  }
+                  100% {
+                    left: 120%;
+                  }
+                }
+              `}</style>
             </motion.button>
           );
         })}
