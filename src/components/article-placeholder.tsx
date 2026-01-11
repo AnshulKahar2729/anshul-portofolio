@@ -1,14 +1,64 @@
-import { Code2, Coffee, Rocket, Zap, Bug, Terminal, GitBranch, Cpu } from "lucide-react";
+"use client";
 
-const PLACEHOLDER_CONFIGS = [
-  { icon: Code2, gradient: "from-blue-500 to-cyan-500", text: "Code or Die" },
-  { icon: Coffee, gradient: "from-amber-500 to-orange-500", text: "Fueled by ☕" },
-  { icon: Rocket, gradient: "from-purple-500 to-pink-500", text: "Deploy!" },
-  { icon: Zap, gradient: "from-yellow-500 to-red-500", text: "Fast AF" },
-  { icon: Bug, gradient: "from-green-500 to-emerald-500", text: "It's a Feature" },
-  { icon: Terminal, gradient: "from-slate-500 to-zinc-500", text: "sudo read" },
-  { icon: GitBranch, gradient: "from-indigo-500 to-blue-500", text: "Merge Conflict" },
-  { icon: Cpu, gradient: "from-red-500 to-pink-500", text: "01001000 01101001" },
+import { motion } from "framer-motion";
+
+const placeholders = [
+  { 
+    gradient: "from-purple-500 via-pink-500 to-red-500",
+    icon: "💻",
+    emoji: "🚀",
+    text: "Code is Poetry",
+    subtitle: "Writing elegant solutions"
+  },
+  { 
+    gradient: "from-blue-500 via-cyan-500 to-teal-500",
+    icon: "🔥",
+    emoji: "⚡",
+    text: "Shipping Fast",
+    subtitle: "Move fast, break things"
+  },
+  { 
+    gradient: "from-green-500 via-emerald-500 to-cyan-500",
+    icon: "🎯",
+    emoji: "💡",
+    text: "Debug Mode: ON",
+    subtitle: "console.log everything"
+  },
+  { 
+    gradient: "from-orange-500 via-yellow-500 to-amber-500",
+    icon: "🎨",
+    emoji: "✨",
+    text: "CSS is Magic",
+    subtitle: "When it finally works"
+  },
+  { 
+    gradient: "from-indigo-500 via-purple-500 to-pink-500",
+    icon: "🧠",
+    emoji: "🔮",
+    text: "Think Different",
+    subtitle: "Innovation over tradition"
+  },
+  { 
+    gradient: "from-pink-500 via-rose-500 to-red-500",
+    icon: "🎭",
+    emoji: "🎪",
+    text: "Tech Enthusiast",
+    subtitle: "Always learning, always building"
+  },
+  { 
+    gradient: "from-cyan-500 via-blue-500 to-indigo-500",
+    icon: "🌟",
+    emoji: "💫",
+    text: "Stay Curious",
+    subtitle: "Question everything"
+  },
+  { 
+    gradient: "from-lime-500 via-green-500 to-emerald-500",
+    icon: "🚀",
+    emoji: "🛸",
+    text: "Built Different",
+    subtitle: "Not your average code"
+  },
 ];
 
 interface ArticlePlaceholderProps {
@@ -16,21 +66,69 @@ interface ArticlePlaceholderProps {
 }
 
 export function ArticlePlaceholder({ title }: ArticlePlaceholderProps) {
-  // Use title to consistently pick the same placeholder for the same article
+  // Use title hash to consistently pick the same placeholder
   const hash = title.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const config = PLACEHOLDER_CONFIGS[hash % PLACEHOLDER_CONFIGS.length];
-  const Icon = config.icon;
+  const placeholder = placeholders[hash % placeholders.length];
 
   return (
-    <div className={`relative h-48 w-full overflow-hidden bg-gradient-to-br ${config.gradient} flex items-center justify-center`}>
-      <div className="absolute inset-0 bg-black/20" />
-      <div className="relative z-10 text-center space-y-3">
-        <Icon className="h-16 w-16 text-white mx-auto animate-pulse" />
-        <p className="text-white font-bold text-lg px-4">{config.text}</p>
+    <div className={`relative w-full h-48 bg-gradient-to-br ${placeholder.gradient} overflow-hidden`}>
+      {/* Animated background pattern */}
+      <motion.div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
+          backgroundSize: "20px 20px"
+        }}
+        animate={{
+          backgroundPosition: ["0px 0px", "20px 20px"]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+      
+      {/* Floating icons */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl"
+        animate={{
+          y: [0, -10, 0],
+          rotate: [0, 5, -5, 0]
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        {placeholder.icon}
+      </motion.div>
+
+      <motion.div
+        className="absolute top-4 right-4 text-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          rotate: [0, 10, -10, 0]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.5
+        }}
+      >
+        {placeholder.emoji}
+      </motion.div>
+
+      {/* Text overlay with subtitle */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 via-black/50 to-transparent">
+        <p className="text-white font-bold text-xl text-center mb-1">{placeholder.text}</p>
+        <p className="text-white/80 text-sm text-center italic">{placeholder.subtitle}</p>
       </div>
-      {/* Animated circles */}
-      <div className="absolute top-4 left-4 w-20 h-20 rounded-full bg-white/10 animate-ping" />
-      <div className="absolute bottom-4 right-4 w-16 h-16 rounded-full bg-white/10 animate-pulse" />
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
     </div>
   );
 }

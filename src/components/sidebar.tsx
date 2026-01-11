@@ -24,23 +24,28 @@ export function Sidebar() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map(item => item.href.slice(1));
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
 
+      let currentSection = sections[0];
+      
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetBottom = offsetTop + element.offsetHeight;
-
-          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-            setActiveSection(section);
-            break;
+          const sectionTop = element.offsetTop;
+          const sectionHeight = element.offsetHeight;
+          const sectionMiddle = sectionTop + sectionHeight / 2;
+          
+          if (scrollPosition >= sectionMiddle) {
+            currentSection = section;
           }
         }
       }
+      
+      setActiveSection(currentSection);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

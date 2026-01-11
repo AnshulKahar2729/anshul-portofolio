@@ -206,17 +206,6 @@ export default function Page() {
       </section> */}
       {/* Skills Section - 3D Keyboard */}
       <section id="skills" className="px-6 py-20 max-w-7xl mx-auto relative">
-        {/* Matrix rain effect */}
-        <motion.div
-          className="absolute inset-0 opacity-10"
-          style={{
-            background: "repeating-linear-gradient(0deg, transparent, transparent 2px, currentColor 2px, currentColor 4px)",
-          }}
-          animate={{
-            backgroundPosition: ["0px 0px", "0px 40px"],
-          }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-        />
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}

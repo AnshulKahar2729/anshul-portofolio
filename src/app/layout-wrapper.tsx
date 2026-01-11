@@ -5,8 +5,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Sidebar } from "@/components/sidebar";
 import { MobileNav } from "@/components/mobile-nav";
 import { TechIdeaPopup } from "@/components/tech-idea-popup";
-import { WaterRipple } from "@/components/water-ripple";
 import { CursorSpotlight } from "@/components/cursor-spotlight";
+import { HoverParticles } from "@/components/hover-particles";
 
 export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -14,6 +14,9 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
       <TooltipProvider delayDuration={0}>
         {/* Cursor Spotlight Effect */}
         <CursorSpotlight />
+        
+        {/* Hover Particles */}
+        <HoverParticles />
 
         {/* Desktop Sidebar */}
         <div className="hidden lg:block">
@@ -30,9 +33,6 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
 
         {/* Tech Idea Popup */}
         <TechIdeaPopup />
-
-        {/* Water Ripple Effect */}
-        <WaterRipple />
       </TooltipProvider>
     </ThemeProvider>
   );

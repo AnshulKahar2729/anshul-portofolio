@@ -25,7 +25,7 @@ export function TimeBasedBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
+    <div className="fixed inset-0 -z-10 overflow-hidden" style={{ backgroundColor: "#0f0f0f" }}>
       {/* MORNING - Rising sun and birds (6am-12pm) */}
       {timeOfDay === "morning" && (
         <>
@@ -201,36 +201,8 @@ export function TimeBasedBackground() {
             <div className="absolute bottom-6 left-8 w-3 h-3 rounded-full bg-white/10 blur-[2px]" />
           </motion.div>
 
-          {/* Multiple Shooting stars */}
-          {[0, 1, 2, 3].map((i) => (
-            <motion.div
-              key={`shooting-${i}`}
-              className="absolute w-1 h-1 bg-white rounded-full"
-              style={{
-                boxShadow: "0 0 8px 2px rgba(255,255,255,0.8)",
-                left: `${20 + i * 20}%`,
-                top: `${5 + i * 10}%`,
-              }}
-              initial={{ x: 0, y: 0, opacity: 0 }}
-              animate={{
-                x: [0, 250],
-                y: [0, 250],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatDelay: 4 + i * 2,
-                ease: "easeOut",
-                delay: i * 2
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-white to-transparent w-20 h-[2px] blur-sm" />
-            </motion.div>
-          ))}
-
-          {/* Twinkling stars */}
-          {[...Array(80)].map((_, i) => (
+          {/* Twinkling stars - INCREASED DENSITY */}
+          {[...Array(150)].map((_, i) => (
             <motion.div
               key={`twinkle-${i}`}
               className="absolute rounded-full bg-white"
