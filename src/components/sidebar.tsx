@@ -2,28 +2,41 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { DATA } from "@/data/resume";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { Separator } from "@/components/ui/separator";
-import { Home, User, Briefcase, Code, Lightbulb, Mail } from "lucide-react";
+import { Home, User, Briefcase, Code, Lightbulb, Mail, Wrench, LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 
-const navItems = [
+interface NavItem {
+  icon: LucideIcon;
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+const navItems: NavItem[] = [
   { icon: Home, label: "Home", href: "#home" },
   { icon: Briefcase, label: "Experience", href: "#work" },
   { icon: Code, label: "Projects", href: "#projects" },
+  { icon: Wrench, label: "Tools", href: "/tools", external: true },
   { icon: Lightbulb, label: "Blog", href: "#articles" },
   { icon: Mail, label: "Contact", href: "#contact" },
 ];
 
 export function Sidebar() {
   const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => item.href.slice(1));
+      if (!isHomePage) return; // Only track sections on home page
+      
+      const sections = navItems.filter(item => !item.external).map(item => item.href.slice(1));
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       let currentSection = sections[0];
@@ -47,9 +60,20 @@ export function Sidebar() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHomePage]);
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = (href: string, external?: boolean) => {
+    if (external) {
+      window.location.href = href;
+      return;
+    }
+    
+    // If home link clicked and not on home page, redirect to home
+    if (href === "#home" && !isHomePage) {
+      window.location.href = "/";
+      return;
+    }
+    
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -106,12 +130,12 @@ export function Sidebar() {
       <nav className="flex-1 p-4 space-y-1 relative">
         {navItems.map((item, index) => {
           const Icon = item.icon;
-          const isActive = activeSection === item.href.slice(1);
+          const isActive = !item.external && isHomePage && activeSection === item.href.slice(1);
           
           return (
             <motion.button
               key={item.href}
-              onClick={() => scrollToSection(item.href)}
+              onClick={() => scrollToSection(item.href, item.external)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all relative overflow-hidden group ${
                 isActive
                   ? "text-white"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
@@ -8,19 +9,41 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
 
-const navItems = [
+interface NavItem {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+const navItems: NavItem[] = [
   { label: "Home", href: "#home" },
   { label: "Experience", href: "#work" },
   { label: "Tech Stack", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Tools", href: "/tools", external: true },
   { label: "Blog", href: "#articles" },
   { label: "Contact", href: "#contact" },
 ];
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = (href: string, external?: boolean) => {
+    if (external) {
+      window.location.href = href;
+      setIsOpen(false);
+      return;
+    }
+    
+    // If home link clicked and not on home page, redirect to home
+    if (href === "#home" && !isHomePage) {
+      window.location.href = "/";
+      setIsOpen(false);
+      return;
+    }
+    
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -58,7 +81,7 @@ export function MobileNav() {
             {navItems.map((item) => (
               <button
                 key={item.href}
-                onClick={() => scrollToSection(item.href)}
+                onClick={() => scrollToSection(item.href, item.external)}
                 className="text-left px-4 py-3 rounded-lg transition-all text-foreground hover:backdrop-blur-xl border border-transparent"
                 style={{
                   ['--hover-bg' as any]: `linear-gradient(135deg, hsla(var(--primary), 0.1), hsla(var(--primary), 0.05))`,
